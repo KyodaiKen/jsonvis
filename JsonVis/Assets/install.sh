@@ -8,13 +8,6 @@ APP_NAME="jsonvis"
 INSTALL_DIR="/opt/$APP_NAME"
 BINARY_SOURCE_NAME="JsonVis"
 
-echo "-------------------------------------------------------"
-echo " Starting Build Process for Linux (x64)..."
-echo "-------------------------------------------------------"
-
-# Execute the optimized publish command
-dotnet publish -c Release -r linux-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
-
 # Check if build was successful
 if [ $? -ne 0 ]; then
     echo ""
@@ -30,7 +23,7 @@ echo "-------------------------------------------------------"
 # Check for root privileges
 if [ "$EUID" -ne 0 ]; then
   echo "PERMISSION DENIED: Please run this script with sudo:"
-  echo "sudo ./install_linux.sh"
+  echo "sudo ./install.sh"
   exit 1
 fi
 
